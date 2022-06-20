@@ -1,0 +1,20 @@
+ canvas {
+     background-color: black;
+ }
+
+ canvas#mainChart:active {
+     cursor: grabbing;
+ }
+
+ canvas#xScale {
+     cursor: ew-resize;
+ }
+
+ canvas#yScale {
+     cursor: ns-resize;
+ }
+
+ .chartContainer {
+     display: flex;
+     flex-direction: row;
+ }

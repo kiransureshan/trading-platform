@@ -1,0 +1,7 @@
+.sideBarContainer{
+    border-right: 1px solid var(--tertiary-bg-color);
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}

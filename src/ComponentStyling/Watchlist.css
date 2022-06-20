@@ -1,0 +1,16 @@
+.watchlistContainer{
+    color: var(--primary-text-color);
+    width: 100%;
+}
+
+.watchlistTitle{
+    border-bottom:1px solid var(--secondary-text-color);
+    padding:10px;
+}
+.watchlistRow{
+    padding:5px 10px;
+}
+
+.tickerTitle{
+    margin:0;
+}

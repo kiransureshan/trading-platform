@@ -51,3 +51,12 @@
 .watchlistCollapse:focus{
     outline:none;
 }
+
+.dailyChange.negative{
+    color: var(--red);
+}
+
+.dailyChange.positive{
+    color: var(--green);
+}
+

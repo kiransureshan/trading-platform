@@ -31,7 +31,7 @@ function Watchlist({name,tickers,id}){
                     {tickers.map((obj,i) => {return <tr className='watchlistRow' key = {i}>
                         <td>{obj.ticker}</td>
                         <td>{obj.last}</td>
-                        <td>{obj.dailyChangePercent}</td>
+                        <td className={obj.dailyChangePercent >=0 ? "dailyChange positive" : "dailyChange negative"}>{obj.dailyChangePercent}</td>
                     </tr>
                 })}
                 </tbody>

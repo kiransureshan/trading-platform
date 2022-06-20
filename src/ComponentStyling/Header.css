@@ -8,7 +8,7 @@
     top: 0;
     left: 0;
     box-sizing: border-box;
-    border-bottom: 1px solid var(--tertiary-bg-color);
+    border-bottom: 2px solid var(--tertiary-bg-color);
 }
 
 .quickActionsContainer {

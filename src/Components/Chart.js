@@ -20,12 +20,14 @@ function Chart () {
 
   // TODO: check if need to be state, ref, or normal var based on re-rendering needs
   const maxHigh = 100;
-  const minLow = 10;
+  const minLow = 20;
+  const scaleWidth = 30;
   const numYTicks = useRef(20);
   // updated on scroll for more data
   const numCandles = useRef(100);
   // fixed, updated on screen resize
-  const chartHeight = useRef(500);
+  const chartHeight = useRef(600);
+  const chartWidth = useRef(1500);
   const [candleWidth, setCandleWidth]= useState(7);
   const candleContWidth = useRef(5.5 + candleWidth);
   // how far from the left have we scrolled
@@ -45,7 +47,7 @@ function Chart () {
     {
       "open": 40.00,
       "high": 58.00,
-      "low": 10.00,
+      "low": 20.00,
       "close": 55.50
     },
     {
@@ -67,7 +69,22 @@ function Chart () {
 
     yScale.current=document.getElementById("yScale");
     yScaleCtx.current=yScale.current.getContext("2d");
+    handleResize(chart.current, xScale.current, yScale.current);
   }, [])
+
+  function handleResize(chartEl, xScaleEl, yScaleEl){
+    const chartDiv = document.getElementById("mainChartDiv");
+    const newChartWidth = chartDiv.offsetWidth;
+    const newChartHeight = chartDiv.offsetHeight;
+    chartEl.width = newChartWidth;
+    chartEl.height = newChartHeight;
+    chartWidth.current = newChartWidth;
+    chartHeight.current = newChartHeight;
+    xScaleEl.width = chartWidth.current;
+    yScaleEl.height = chartHeight.current;
+    candleContWidth.current = 5.5 + candleWidth;
+    drawAllCandles();
+  }
 
   useEffect(() => {
     candleContWidth.current = 5.5 + candleWidth;
@@ -76,8 +93,8 @@ function Chart () {
 
   const drawAllCandles = () => {
       chartCtx.current.clearRect(0,0,chart.current.width,chart.current.height);
-      xScaleCtx.current.clearRect(0,0,1000,30);
-      yScaleCtx.current.clearRect(0,0,30,1000);
+      xScaleCtx.current.clearRect(0,0,chartWidth.current,scaleWidth);
+      yScaleCtx.current.clearRect(0,0,scaleWidth,chartWidth.current);
       drawScaleContainers();
       for (let i = numCandles.current - 1 ; i >= 0; i--){
         drawCandle(candleData.current[i%3],i);
@@ -127,8 +144,8 @@ function Chart () {
 
   function drawScaleTick(x){
     xScaleCtx.current.beginPath();
-    xScaleCtx.current.moveTo(x,30);
-    xScaleCtx.current.lineTo(x, 20);
+    xScaleCtx.current.moveTo(x,scaleWidth);
+    xScaleCtx.current.lineTo(x, scaleWidth - 10);
     xScaleCtx.current.closePath();
     xScaleCtx.current.fillStyle= "white";
     xScaleCtx.current.strokeStyle = "white";
@@ -140,7 +157,7 @@ function Chart () {
     // x-scale container
     xScaleCtx.current.beginPath();
     xScaleCtx.current.moveTo(0,0);
-    xScaleCtx.current.lineTo(1000, 0);
+    xScaleCtx.current.lineTo(chartWidth.current, 0);
     xScaleCtx.current.closePath();
     xScaleCtx.current.fill();
     xScaleCtx.current.stroke();
@@ -150,7 +167,7 @@ function Chart () {
     yScaleCtx.current.beginPath();
     for ( var i = 0; i < numYTicks.current; i++){
       yScaleCtx.current.moveTo(10,interval*i + topOffset);
-      yScaleCtx.current.lineTo(30, interval*i + topOffset);
+      yScaleCtx.current.lineTo(scaleWidth, interval*i + topOffset);
     }
     yScaleCtx.current.closePath();
     yScaleCtx.current.fillStyle= "white";
@@ -164,7 +181,6 @@ function Chart () {
     yScaleCtx.current.closePath();
     yScaleCtx.current.fill();
     yScaleCtx.current.stroke();
-
   }
 
   function mouseDown(e){
@@ -213,18 +229,23 @@ function Chart () {
   }
 
   return(
-    <div className='flex-grow-1'>
+    <div className='col-md-10 p-5'>
       <div className="chartContainer">
-        <canvas id="mainChart" width="1000" height="500" 
+      <div id="mainChartDiv" className='col-11 p-0'>
+        <canvas id="mainChart" width="1500" height="600"
           onMouseDown={mouseDown}
           onMouseUp = {mouseUp}
           onMouseMove = {chartMouseMove}/>
-        <canvas id="yScale" width="30" height="500"
+      </div>
+      <div className='col-1 p-0'>
+        <canvas id="yScale" width="30" height="600"
         onMouseDown={(e) => {yScaleMouseDown(e); mouseDown(e)}}
         onMouseUp = {mouseUp}
         onMouseMove = {chartMouseMove} />
       </div>
-      <canvas id="xScale" width="1000" height="30" 
+
+      </div>
+      <canvas id="xScale" width="1500" height="30" 
           onMouseDown={(e) => {xScaleMouseDown(e); mouseDown(e);}}
           onMouseUp = {mouseUp}
           onMouseMove = {chartMouseMove}/>

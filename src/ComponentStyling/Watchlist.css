@@ -1,16 +1,53 @@
 .watchlistContainer{
     color: var(--primary-text-color);
     width: 100%;
+    border-bottom: 2px solid var(--secondary-bg-color);
 }
 
 .watchlistTitle{
-    border-bottom:1px solid var(--secondary-text-color);
-    padding:10px;
+    padding:10px 15px;
 }
 .watchlistRow{
-    padding:5px 10px;
+    padding:5px 15px;
+    /* border-bottom: 1px solid var(--tertiary-bg-color); */
+}
+
+.watchlistRow:hover{
+    cursor:pointer;
+    background-color: var(--secondary-bg-color);
 }
 
 .tickerTitle{
     margin:0;
+}
+
+.watchlistHeader{
+    color: var(--secondary-text-color);
+    background-color: var(--secondary-bg-color);
+}
+
+.watchlistTable{
+    width:100%;
+}
+
+.watchlistTable  td {
+    padding:5px 15px;
+}
+
+.watchlistContHeader{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+
+.watchlistCollapse{
+    background-color: transparent;
+    border: none;
+    color: var(--primary-text-color);
+    transition-duration: 200ms;
+}
+
+.watchlistCollapse:focus{
+    outline:none;
 }

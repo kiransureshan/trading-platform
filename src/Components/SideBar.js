@@ -2,7 +2,6 @@ import "../ComponentStyling/SideBar.css";
 import Watchlist from "./Watchlist";
 
 function SideBar(){
-
 const watchlists = [
     {
         "name":"Watchlist 1",
@@ -35,7 +34,7 @@ const watchlists = [
         ]
     },
     {
-        "name":"Watchlist 1",
+        "name":"Watchlist 2",
         "tickers":[
             {
             "ticker": "AAPL",
@@ -72,6 +71,7 @@ return(
     name={obj.name} 
     tickers = {obj.tickers} 
     key={i}
+    id = {i}
     />
     })}
 </div>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" className = "logo" width="1089.682" height="919.444" viewBox="0 0 1089.682 919.444">
+    <g id="Component_1_1" data-name="Component 1 – 1" transform="translate(3.029 1.602)">
+        <path id="Path_1" data-name="Path 1" d="M0,0,513.549,880.3" transform="translate(543.063 2.754)" fill="none" stroke="#fff" strokeWidth="7"/>
+        <path id="Path_2" data-name="Path 2" d="M0,0,438.42,851.516" transform="translate(543.063)" fill="none" stroke="#fff" strokeWidth="7"/>
+        <path id="Path_3" data-name="Path 3" d="M0,0,371.753,832.8" transform="translate(543.063)" fill="none" stroke="#fff" strokeWidth="7"/>
+        <path id="Path_4" data-name="Path 4" d="M0,0,315.343,818.951" transform="translate(543.063)" fill="none" stroke="#fff" strokeWidth="7"/>
+        <path id="Path_5" data-name="Path 5" d="M0,0,259.338,798.439" transform="translate(543.063)" fill="none" stroke="#fff" strokeWidth="7"/>
+        <path id="Path_6" data-name="Path 6" d="M0,0,205.855,778.182" transform="translate(543.063)" fill="none" stroke="#fff" strokeWidth="7"/>
+        <path id="Path_7" data-name="Path 7" d="M0,0,157.671,762.541" transform="translate(543.063)" fill="none" stroke="#fff" strokeWidth="7"/>
+        <path id="Path_9" data-name="Path 9" d="M0,0,984.2,48.521" transform="translate(101.383 863.765)" fill="red" stroke="#fff" strokeWidth="7"/>
+        <path id="Path_10" data-name="Path 10" d="M0,0,1045.323,8.056" transform="translate(40.263 906.286)" fill="none" stroke="#fff" strokeWidth="7"/>
+        <path id="Path_11" data-name="Path 11" d="M0,0,934.44,93.334" transform="translate(151.146 818.951)" fill="none" stroke="#fff" strokeWidth="7"/>
+        <path id="Path_12" data-name="Path 12" d="M0,0,885.889,134.1" transform="translate(199.698 778.182)" fill="red" stroke="#fff" strokeWidth="7"/>
+        <path id="Path_13" data-name="Path 13" d="M0,0,839.31,174.011" transform="translate(246.277 738.275)" fill="none" stroke="#fff" strokeWidth="7"/>
+        <path id="Path_14" data-name="Path 14" d="M0,0,802.9,212.4" transform="translate(282.69 699.889)" fill="red" stroke="#fff" strokeWidth="7"/>
+        <path id="Path_15" data-name="Path 15" d="M0,0,764.51,244.865" transform="translate(321.076 667.421)" fill="none" stroke="#fff" strokeWidth="7"/>
+        <path id="Path_16" data-name="Path 16" d="M517.062,0,0,892.532" transform="translate(0 19.754)" fill="none" stroke="#fff" strokeWidth="7"/>
+        <path id="Path_17" data-name="Path 17" d="M529.982,0,0,812.627" transform="translate(0 99.659)" fill="red" stroke="#fff" strokeWidth="7"/>
+        <path id="Path_18" data-name="Path 18" d="M543.062,0,0,739.056" transform="translate(0 173.229)" fill="none" stroke="#fff" strokeWidth="7"/>
+        <path id="Path_19" data-name="Path 19" d="M562.925,0,0,682.449" transform="translate(0 229.837)" fill="red" stroke="#fff" strokeWidth="7"/>
+        <path id="Path_20" data-name="Path 20" d="M571.642,0,0,626.294" transform="translate(0 285.992)" fill="none" stroke="#fff" strokeWidth="7"/>
+        <path id="Path_21" data-name="Path 21" d="M584.142,0,0,572.159" transform="translate(0 340.127)" fill="red" stroke="#fff" strokeWidth="7"/>
+        <path id="Path_22" data-name="Path 22" d="M594.915,0,0,523.195" transform="translate(0 389.091)" fill="none" stroke="#fff" strokeWidth="7"/>
+    </g>
+</svg>

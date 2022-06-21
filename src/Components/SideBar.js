@@ -66,15 +66,15 @@ const watchlists = [
 ]
 
 return(
-<div className="col-md-2 p-0 sideBarContainer">
-    {watchlists.map((obj, i) => {return<Watchlist 
-    name={obj.name} 
-    tickers = {obj.tickers} 
-    key={i}
-    id = {i}
-    />
-    })}
-</div>
+    <div className="col-lg-2 col-md-3 p-0 sideBarContainer d-none d-md-flex">
+        {watchlists.map((obj, i) => {return<Watchlist 
+        name={obj.name} 
+        tickers = {obj.tickers} 
+        key={i}
+        id = {i}
+        />
+        })}
+    </div>
 )
 }
 

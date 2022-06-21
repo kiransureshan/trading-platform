@@ -9,6 +9,7 @@
     --pink-highlight: #d935ff;
     --purple-highlight: #9856ff;
     --blue-highlight: rgb(65, 175, 199);
+    --gradient: linear-gradient(90deg, var(--blue-highlight) 0%, var(--purple-highlight) 35%, var(--pink-highlight) 100%);
 }
 
 

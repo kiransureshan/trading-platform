@@ -7,9 +7,9 @@
 .watchlistTitle{
     padding:10px 15px;
 }
-.watchlistRow{
-    padding:5px 15px;
-    /* border-bottom: 1px solid var(--tertiary-bg-color); */
+
+.watchlistContainer tr td:first-child{
+    padding-left:10px;
 }
 
 .watchlistRow:hover{
@@ -31,7 +31,7 @@
 }
 
 .watchlistTable  td {
-    padding:5px 15px;
+    padding:5px 0px;
 }
 
 .watchlistContHeader{

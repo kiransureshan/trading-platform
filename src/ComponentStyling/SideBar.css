@@ -1,5 +1,7 @@
 .sideBarContainer{
-    border-right: 2px solid var(--tertiary-bg-color);
+    border-width: 2px 2px 0px 0px;
+    border-color:var(--tertiary-bg-color);
+    border-style: solid;
     display:flex;
     flex-direction: column;
     justify-content: flex-start;

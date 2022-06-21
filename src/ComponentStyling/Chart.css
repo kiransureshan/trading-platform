@@ -14,8 +14,17 @@
      cursor: ns-resize;
  }
 
- .chartContainer {
+ .mainChartContainer {
     display: flex;
     flex-direction: row;
-    height:calc(100% - 30px);
+    height:calc(100% - 60px);
+    width: calc(100% - 30px);
  }
+
+ .chartContainer{
+    border-width: 2px 0px 0px 0px;
+    border-color: var(--tertiary-bg-color);
+    border-style: solid;
+    padding:0;
+ }
+

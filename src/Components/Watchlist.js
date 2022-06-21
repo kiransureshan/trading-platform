@@ -22,16 +22,16 @@ function Watchlist({name,tickers,id}){
             <table id={watchListId} className='watchlistTable'>
                 <thead>
                     <tr className='watchlistHeader'>
-                        <td>Ticker</td>
-                        <td>Last</td>
-                        <td>Daily %</td>
+                        <td className='col-3'>Ticker</td>
+                        <td className='col-3'>Last</td>
+                        <td className='col-3'>Daily %</td>
                     </tr>
                 </thead>
                 <tbody>
                     {tickers.map((obj,i) => {return <tr className='watchlistRow' key = {i}>
-                        <td>{obj.ticker}</td>
-                        <td>{obj.last}</td>
-                        <td className={obj.dailyChangePercent >=0 ? "dailyChange positive" : "dailyChange negative"}>{obj.dailyChangePercent}</td>
+                        <td className='col-3'>{obj.ticker}</td>
+                        <td className='col-3'>{obj.last}</td>
+                        <td className={(obj.dailyChangePercent >=0 ? "dailyChange positive" : "dailyChange negative")+"col-3"}>{obj.dailyChangePercent}</td>
                     </tr>
                 })}
                 </tbody>

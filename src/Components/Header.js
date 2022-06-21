@@ -18,11 +18,6 @@ function Header(){
                     <div className="quickAction">Watchlists</div>
                 </div>
             </div>
-            <div className="searchBarContainer middleContainer">
-                <input autoComplete="off" placeholder="Search Ticker" className="searchBar"></input>
-                <button className="searchButton">Go</button>
-            </div>
-            <div className="cornerContainer"></div>
         </div>
     )
 }

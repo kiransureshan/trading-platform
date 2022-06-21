@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import '../ComponentStyling/Chart.css';
+import ChartMenu from './ChartMenu';
 
 function Chart () {
 
@@ -18,20 +19,19 @@ function Chart () {
   var mouseOnYScale = useRef(false);
 
 
-  // TODO: check if need to be state, ref, or normal var based on re-rendering needs
-  const maxHigh = 100;
-  const minLow = 20;
+  const maxHigh = 150;
+  const minLow = -20;
   const scaleWidth = 30;
-  const numYTicks = useRef(20);
+  const numYTicks = 20;
   // updated on scroll for more data
-  const numCandles = useRef(100);
+  const [numCandles, setNumCandles] = useState(100);
   // fixed, updated on screen resize
   const chartHeight = useRef(600);
   const chartWidth = useRef(1500);
   const [candleWidth, setCandleWidth]= useState(7);
   const candleContWidth = useRef(5.5 + candleWidth);
   // how far from the left have we scrolled
-  // TODO: change to right offset once working, AND combine into one stare variable {left:0,top:0}
+  // TODO: change to right offset once working, AND combine into one state variable {left:0,top:0}
   const [leftOffset, setLeftOffset] = useState(0);
   const [topOffset, setTopOffset] = useState(0);
   const [yScaleFactor, setYScaleFactor] = useState(1);
@@ -94,9 +94,9 @@ function Chart () {
   const drawAllCandles = () => {
       chartCtx.current.clearRect(0,0,chart.current.width,chart.current.height);
       xScaleCtx.current.clearRect(0,0,chartWidth.current,scaleWidth);
-      yScaleCtx.current.clearRect(0,0,scaleWidth,chartWidth.current);
+      yScaleCtx.current.clearRect(0,0,scaleWidth,chartHeight.current);
       drawScaleContainers();
-      for (let i = numCandles.current - 1 ; i >= 0; i--){
+      for (let i = numCandles - 1 ; i >= 0; i--){
         drawCandle(candleData.current[i%3],i);
       }
   }
@@ -138,17 +138,16 @@ function Chart () {
 
     // draw timeScale tick for the candle
     if(candleNum%5 === 0){
-      drawScaleTick(midPointX);
+      drawXScaleTick(midPointX);
     }
   };
 
-  function drawScaleTick(x){
+  function drawXScaleTick(x){
     xScaleCtx.current.beginPath();
-    xScaleCtx.current.moveTo(x,scaleWidth);
-    xScaleCtx.current.lineTo(x, scaleWidth - 10);
+    xScaleCtx.current.moveTo(x,0);
+    xScaleCtx.current.lineTo(x, scaleWidth/2);
     xScaleCtx.current.closePath();
-    xScaleCtx.current.fillStyle= "white";
-    xScaleCtx.current.strokeStyle = "white";
+    xScaleCtx.current.strokeStyle = "#acacb5";
     xScaleCtx.current.fill();
     xScaleCtx.current.stroke();
   }
@@ -159,27 +158,23 @@ function Chart () {
     xScaleCtx.current.moveTo(0,0);
     xScaleCtx.current.lineTo(chartWidth.current, 0);
     xScaleCtx.current.closePath();
-    xScaleCtx.current.fill();
     xScaleCtx.current.stroke();
 
-    //y-scale container
-    let interval = chartHeight.current/((numYTicks.current-1))*yScaleFactor;
+    //y-scale container and ticks
+    let interval = chartHeight.current/((numYTicks-1))*yScaleFactor;
     yScaleCtx.current.beginPath();
-    for ( var i = 0; i < numYTicks.current; i++){
-      yScaleCtx.current.moveTo(10,interval*i + topOffset);
-      yScaleCtx.current.lineTo(scaleWidth, interval*i + topOffset);
+    for ( var i = 0; i < numYTicks; i++){
+      yScaleCtx.current.moveTo(0,interval*i + topOffset);
+      yScaleCtx.current.lineTo(scaleWidth/2, interval*i + topOffset);
     }
     yScaleCtx.current.closePath();
-    yScaleCtx.current.fillStyle= "white";
-    yScaleCtx.current.strokeStyle = "white";
-    yScaleCtx.current.fill();
+    yScaleCtx.current.strokeStyle = "#acacb5";
     yScaleCtx.current.stroke();
 
     yScaleCtx.current.beginPath();
     yScaleCtx.current.moveTo(0,0);
     yScaleCtx.current.lineTo(0, chartHeight.current);
     yScaleCtx.current.closePath();
-    yScaleCtx.current.fill();
     yScaleCtx.current.stroke();
   }
 
@@ -229,21 +224,21 @@ function Chart () {
   }
 
   return(
-    <div className='col-md-10 p-5'>
-      <div className="chartContainer">
-      <div id="mainChartDiv" className='col-11 p-0'>
-        <canvas id="mainChart" width="1500" height="600"
-          onMouseDown={mouseDown}
+    <div className='col-md-10 chartContainer'>
+      <ChartMenu/>
+      <div className="mainChartContainer">
+        <div id="mainChartDiv" className='p-0 w-100'>
+          <canvas id="mainChart" width="1500" height="600"
+            onMouseDown={mouseDown}
+            onMouseUp = {mouseUp}
+            onMouseMove = {chartMouseMove}/>
+        </div>
+        <div className='p-0'>
+          <canvas id="yScale" width="30" height="600"
+          onMouseDown={(e) => {yScaleMouseDown(e); mouseDown(e)}}
           onMouseUp = {mouseUp}
-          onMouseMove = {chartMouseMove}/>
-      </div>
-      <div className='col-1 p-0'>
-        <canvas id="yScale" width="30" height="600"
-        onMouseDown={(e) => {yScaleMouseDown(e); mouseDown(e)}}
-        onMouseUp = {mouseUp}
-        onMouseMove = {chartMouseMove} />
-      </div>
-
+          onMouseMove = {chartMouseMove} />
+        </div>
       </div>
       <canvas id="xScale" width="1500" height="30" 
           onMouseDown={(e) => {xScaleMouseDown(e); mouseDown(e);}}

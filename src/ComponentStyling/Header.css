@@ -8,7 +8,6 @@
     top: 0;
     left: 0;
     box-sizing: border-box;
-    border-bottom: 2px solid var(--tertiary-bg-color);
 }
 
 .quickActionsContainer {
@@ -45,44 +44,4 @@
 .actionWrapper.active {
     color: var(--primary-text-color);
     border-bottom: 2px solid var(--primary-text-color);
-}
-
-.searchBar {
-    background-color: var(--secondary-bg-color);
-    border: 0;
-    color: var(--secondary-text-color);
-    padding: 10px;
-    flex-grow: 1;
-    outline: none;
-    border-radius: 3px;
-}
-
-.searchButton {
-    background-color: var(--secondary-bg-color);
-    padding: 10px;
-    border: 0;
-    color: var(--secondary-text-color);
-    cursor: pointer;
-    border-left: 1px var(--tertiary-bg-color) solid;
-    border-radius: 3px;
-}
-
-.searchButton:hover {
-    background-color: var(--tertiary-bg-color);
-}
-
-.searchBarContainer {
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.cornerContainer {
-    width: 30%;
-}
-
-.middleContainer {
-    width: 40%;
 }

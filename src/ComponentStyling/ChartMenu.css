@@ -1,0 +1,57 @@
+.chartMenuContainer{
+    color: var(--primary-text-color);
+    height:40px;
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    border-bottom:1px solid var(--tertiary-bg-color);
+}
+
+.tickerInput{
+    background-color: transparent;
+    border:none;
+    color: var(--primary-text-color);
+    padding:0px 10px;
+    width:75px;
+    height:100%;
+    outline:none;
+}
+
+
+.tickerInput:hover{
+    background-color: var(--secondary-bg-color);
+    cursor:pointer;
+}
+
+.vertSeparator{
+    width:1px;
+    background-color:var(--tertiary-bg-color);
+    height:75%;
+    margin: 0px 5px;
+}
+
+
+.timeframeOption{
+    border-width:0px 0px 2px 0px;
+    border-style:solid;
+    border-color: transparent;
+    background: none;
+    color:var(--primary-text-color);
+    padding:5px;
+    text-align: center;
+}
+
+.timeframeOption:hover{
+    cursor: pointer;
+    background-color: var(--secondary-bg-color);
+}
+
+.timeframeOption:focus {
+    outline: none;
+}
+
+.timeframeOption.current{
+    background:
+        linear-gradient(var(--primary-bg-color), var(--primary-bg-color)) padding-box,
+        linear-gradient(to right, var(--blue-highlight), var(--purple-highlight),var(--pink-highlight)) border-box;
+}

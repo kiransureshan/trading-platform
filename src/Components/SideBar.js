@@ -1,5 +1,5 @@
 import "../ComponentStyling/SideBar.css";
-import Watchlist from "./Watchlist";
+import SideWatchlist from "./SideWatchlist";
 
 function SideBar(){
 const watchlists = [
@@ -64,10 +64,9 @@ const watchlists = [
         ]
     }
 ]
-
 return(
     <div className="col-lg-2 col-md-3 p-0 sideBarContainer d-none d-md-flex">
-        {watchlists.map((obj, i) => {return<Watchlist 
+        {watchlists.map((obj, i) => {return <SideWatchlist 
         name={obj.name} 
         tickers = {obj.tickers} 
         key={i}

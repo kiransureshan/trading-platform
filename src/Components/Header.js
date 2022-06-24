@@ -1,22 +1,15 @@
 import "../ComponentStyling/Header.css";
 import {ReactComponent as LogoSVG} from '../Media/logo.svg';
+import {NavLink} from "react-router-dom";
 
 function Header(){
     return(
         <div className="headerContainer">
-            <div className="quickActionsContainer cornerContainer">
-                <div className="actionWrapper">
+            <div className="quickActionsContainer">
                 <LogoSVG/>
-                </div>  
-                <div className="actionWrapper active">
-                    <div className="quickAction" >Chart</div>
-                </div>
-                <div className="actionWrapper">
-                    <div className="quickAction">Portfolio</div>
-                </div>
-                <div className="actionWrapper">
-                    <div className="quickAction">Watchlists</div>
-                </div>
+                <NavLink className={({isActive}) => isActive ? "quickAction active" : "quickAction"}  to="/chart">Chart</NavLink>
+                <NavLink className={({isActive}) => isActive ? "quickAction active" : "quickAction"} to="/portfolio">Portfolio</NavLink>
+                <NavLink className={({isActive}) => isActive ? "quickAction active" : "quickAction"} to="/account">Account</NavLink>
             </div>
         </div>
     )

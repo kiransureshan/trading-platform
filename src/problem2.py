@@ -1,22 +1,28 @@
 from typing import List, Optional, Tuple
+import heapq
 
-def find_near_standers(busStop:List[int], d: int):
-    # init hashmap to store all commuters
-    # key:value -> position:index
-    commuters  = {}
+def find_near_standers(busStop:List[int], d: int) -> Optional[Tuple]:
+    # create a hashmap to store the indices of all value before converting to heap
+    # commuter_value : index
+    commuters = {}
 
-    # add all commuters into the hashTable
     for i in range(len(busStop)):
         commuters[busStop[i]] = i
-    
-    # iterate through each commuter in hashTable and check if 
-    # there is another commuter within value+d
-    for commuter in commuters:
-        # check distance + d -> runs fixed d times
-        for i in range(1,d+1):
-            print("Comparing", commuter ,"against", commuter ," + ", i)
-            if (commuter + i) in commuters:
-                return (commuters[commuter],commuters[commuter + i])
+
+    # create a heap which orders them in ascending order using the given values -> O(n) time
+    heapq.heapify(busStop)
+
+    # get the first value to compare against
+    last = heapq.heappop(busStop)
+
+    # iterate the whole heap and check for any values that are <= d apart
+    while(len(busStop) > 0):
+        next = heapq.heappop(busStop)
+        if (abs(next-last) <= d):
+            return (commuters[next], commuters[last])
+        else:
+            last = next
     
     # get this far if no values within range d
     return None
+

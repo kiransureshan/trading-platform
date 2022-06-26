@@ -65,7 +65,7 @@ const watchlists = [
     }
 ]
 return(
-    <div className="col-lg-2 col-md-3 p-0 sideBarContainer d-none d-md-flex">
+    <div className="col-lg-2 col-md-3 col-12 p-0 sideBarContainer">
         {watchlists.map((obj, i) => {return <SideWatchlist 
         name={obj.name} 
         tickers = {obj.tickers} 

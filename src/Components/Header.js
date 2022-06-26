@@ -9,7 +9,6 @@ function Header(){
                 <LogoSVG/>
                 <NavLink className={({isActive}) => isActive ? "quickAction active" : "quickAction"}  to="/chart">Chart</NavLink>
                 <NavLink className={({isActive}) => isActive ? "quickAction active" : "quickAction"} to="/portfolio">Portfolio</NavLink>
-                <NavLink className={({isActive}) => isActive ? "quickAction active" : "quickAction"} to="/account">Account</NavLink>
             </div>
         </div>
     )

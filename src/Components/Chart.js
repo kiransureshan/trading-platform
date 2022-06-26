@@ -224,7 +224,7 @@ function Chart () {
   }
 
   return(
-    <div className='col-md-10 chartContainer'>
+    <div className='col-lg-10 col-md-9 col-12 chartContainer'>
       <ChartMenu/>
       <div className="mainChartContainer">
         <div id="mainChartDiv" className='p-0 w-100'>

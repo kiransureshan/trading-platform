@@ -12,12 +12,27 @@ function Chart () {
   const yScale = useRef(null);
   const yScaleCtx = useRef(null);
 
+  // const socket = new WebSocket('wss://ws.finnhub.io?token=cb4r102ad3i5f7mlct00');
+
+  // // Connection opened -> Subscribe
+  // socket.onopen = (event) =>{
+  //   socket.send(JSON.stringify({'type':'subscribe', 'symbol': 'BINANCE:BTCUSDT'}))
+  // }
+
+  // function UnsubSocket(symbol){
+  //   socket.send(JSON.stringify({'type':'unsubscribe','symbol': symbol}))
+  // }
+
+  // // Listen for messages
+  // socket.onmessage = (event) => {
+  //   console.log('Message from server ', event.data);
+  // }
+
   var lastX = useRef(0);
   var lastY = useRef(0);
   var mouseIsDown = useRef(false);
   var mouseOnXScale = useRef(false);
   var mouseOnYScale = useRef(false);
-
 
   const maxHigh = 150;
   const minLow = -20;

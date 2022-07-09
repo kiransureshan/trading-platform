@@ -11,6 +11,6 @@
     left: 0;
     /* manual height of header */
     top: 60px;
-    overflow-y: scroll;
+    overflow-y: hidden;
 }
  

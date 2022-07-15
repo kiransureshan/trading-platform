@@ -1,7 +1,9 @@
 import "../ComponentStyling/SideBar.css";
 import SideWatchlist from "./SideWatchlist";
+import QuickerTrader from "./QuickTrader";
 
 function SideBar(){
+
 const watchlists = [
     {
         "name":"Watchlist 1",
@@ -73,6 +75,7 @@ return(
         id = {i}
         />
         })}
+        <QuickerTrader/>
     </div>
 )
 }

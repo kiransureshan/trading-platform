@@ -1,0 +1,64 @@
+.porfolioContainer{
+    width:100%;
+    padding:20px;
+}
+
+.portfolioTable{
+    width:100%;
+    table-layout: fixed;
+}
+
+.portfolioHeader{
+    color:var(--secondary-text-color);
+    border-bottom: 1px solid var(--tertiary-bg-color);
+}
+
+.portfolioHeader p{
+    margin:0;
+    font-weight: lighter;
+}
+
+.portfolioHoldingRow{
+    color:var(--primary-text-color);
+}
+
+.portfolioHoldingRow.profitRow{
+    border-top:1px solid var(--tertiary-bg-color);
+}
+
+.portfolioHoldingRow.accountRow :nth-child(n + 5){
+    border-top: 1px solid var(--tertiary-bg-color);
+}
+
+.portfolioTable td, .portfolioTable th{
+    padding:15px;
+}
+
+.long-pill{
+    border: 1px solid var(--green);
+    color:var(--green);
+    padding:3px 20px;
+    border-radius:30px;
+}
+
+.short-pill{
+    border:1px solid var(--negative);
+    color:var(--negative);
+    padding:3px 20px;
+    border-radius:30px;
+}
+
+.portfolioTable td.pill-cell{
+    padding:10px;
+    display:flex;
+    justify-content: flex-start;
+    align-items:center;
+}
+
+.positive{
+    color: var(--green);
+}
+
+.negative {
+    color: var(--red);
+}

@@ -1,0 +1,99 @@
+.quickTraderContainer {
+    color: var(--primary-text-color);
+    width: 100%;
+    border-bottom: 2px solid var(--secondary-bg-color);
+}
+
+.quickTraderTitle {
+    padding: 10px 15px;
+}
+
+.quickTraderContHeader {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+
+.quickTraderCollapse {
+    background-color: transparent;
+    border: none;
+    color: var(--primary-text-color);
+    transition-duration: 200ms;
+}
+
+.quickTraderCollapse:focus {
+    outline: none;
+}
+
+.quickTraderBody{
+    padding:15px;
+    display:flex;
+    flex-direction: column;
+}
+
+.buttonCont{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+}
+
+.buttonCont .button{
+    width:50%;
+    text-align: center;
+    border:none;
+    background-color:var(--secondary-bg-color);
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.buttonCont .button:focus{
+    outline:none;
+}
+
+.buy.active, .buy:hover{
+    background-color: var(--green);
+}
+
+.sell.active, .sell:hover{
+    background-color: var(--red);
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.tradeInput{
+    margin-top:10px;
+    border: 1px solid var(--tertiary-bg-color);
+    background-color:transparent;
+    padding:2px 5px;
+    border-radius:5px;
+    color:var(--secondary-text-color);
+}
+
+.tradeInput:focus{
+    color: var(--primary-text-color);
+}
+
+.executeTrade{  
+    margin-top:10px;
+    background-color: transparent;
+    border:1px solid white;
+    color:white;
+}
+
+.executeTrade:hover {
+    background-color: var(--secondary-bg-color);
+    color:white;
+}

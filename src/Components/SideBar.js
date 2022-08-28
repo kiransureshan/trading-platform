@@ -1,6 +1,6 @@
 import "../ComponentStyling/SideBar.css";
 import SideWatchlist from "./SideWatchlist";
-import QuickerTrader from "./QuickTrader";
+import QuickTrader from "./QuickTrader";
 
 function SideBar(){
 
@@ -75,7 +75,7 @@ return(
         id = {i}
         />
         })}
-        <QuickerTrader/>
+        <QuickTrader/>
     </div>
 )
 }

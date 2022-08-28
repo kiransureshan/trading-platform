@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import '../ComponentStyling/QuickTrader.css'
 
-function QuickerTrader(){
+function QuickTrader(){
 
     const [tradeSide, setTradeSide] = useState("buy");
 
@@ -48,4 +48,4 @@ function QuickerTrader(){
     )
 }
 
-export default QuickerTrader;
+export default QuickTrader;

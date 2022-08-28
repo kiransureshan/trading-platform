@@ -1,10 +1,12 @@
 import "../ComponentStyling/Portfolio.css"
 import {useState} from "react";
 
+
 function Portfolio(){
 
     const [openProfit] = useState(617800);
     const [closedProfit] = useState(7800);
+
     // should be state
     const holdings = [
         {
@@ -65,6 +67,7 @@ function Portfolio(){
         }
     ]
 
+
     return(
         <div className="porfolioContainer">
             <table className="portfolioTable">
@@ -109,7 +112,7 @@ function Portfolio(){
                     </tr>
                 </tbody>
             </table>
-
+            {/* <button onClick={handleAuth}>oauth</button> */}
 
 
 

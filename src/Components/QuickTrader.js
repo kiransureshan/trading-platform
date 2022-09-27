@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import '../ComponentStyling/QuickTrader.css'
 
-function QuickTrader(){
+function QuickTrader({stompClient}){
 
-    const [tradeSide, setTradeSide] = useState("buy");
+    const [tradeSide, setTradeSide] = useState("BUY");
 
     function hideBody(){
         var body = document.getElementById("quickTraderBody");
@@ -16,7 +16,7 @@ function QuickTrader(){
         setTradeSide(side);
         var targetButton;
         var nonTargetButton;
-        if (side === "buy"){
+        if (side === "BUY"){
             targetButton = document.getElementById("buyButton");
             nonTargetButton = document.getElementById("sellButton");
         } else {
@@ -26,6 +26,22 @@ function QuickTrader(){
 
         targetButton.classList.add("active");
         nonTargetButton.classList.remove("active");
+    }
+
+    function sendOrder(){
+        if (stompClient.connected === true){
+            let sizeInput = document.getElementById("tradeSize");
+            let size = parseInt(sizeInput.value);
+            let chartEl = document.getElementById("mainChart");
+            const body = {
+                ticker: chartEl.ticker,
+                numShares : size,
+                side : tradeSide,
+                cost : 156.78
+            };
+            stompClient.send("/app/orders/add", {}, JSON.stringify(body));
+            sizeInput.value = "";
+        }
     }
 
     return(
@@ -38,11 +54,11 @@ function QuickTrader(){
             </div>
             <div id="quickTraderBody" className='quickTraderBody' style={{display:"none"}}>
                 <div className='buttonCont'>
-                    <button className='buy button active' id = "buyButton" onClick = {(e) => {toggleTradeSide("buy")}}>BUY</button>
-                    <button className='sell button' id = "sellButton" onClick = {() => {toggleTradeSide("sell")}}>SELL</button>
+                    <button className='buy button active' id = "buyButton" onClick = {(e) => {toggleTradeSide("BUY")}}>BUY</button>
+                    <button className='sell button' id = "sellButton" onClick = {() => {toggleTradeSide("SELL")}}>SELL</button>
                 </div>
                 <input type="number" min="1" max="5" className="tradeInput" id="tradeSize" placeholder='Units'></input>
-                <button className="executeTrade">EXECUTE</button>
+                <button className="executeTrade" onClick={() =>{sendOrder()}}>EXECUTE</button>
             </div>
         </div>
     )

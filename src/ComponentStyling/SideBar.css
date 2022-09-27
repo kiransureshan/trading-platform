@@ -6,4 +6,46 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    overflow-y:auto;
 }
+
+.createWLCont{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-direction: row;
+    width:100%;
+}
+
+.createWLBtn{
+    outline:none;
+    background-color: transparent;
+    color: var(--primary-text-color);
+    border: none;
+    padding: 0;
+    text-align: center;
+    height: 25px;
+    width: 25px;
+    border-radius:15px;
+}
+
+.createWLBtn:focus{
+    outline:none;
+}
+
+.createWLBtn:hover{
+    cursor:pointer;
+    background-color: var(--tertiary-bg-color);
+}
+
+.wlInput {
+    background-color: transparent;
+    border: none;
+    color: var(--primary-text-color);
+    padding: 0px 10px;
+    height: 100%;
+    outline: none;
+    width: 65%;
+    margin-left: 15px;
+}
+

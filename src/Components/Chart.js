@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import '../ComponentStyling/Chart.css';
 import ChartMenu from './ChartMenu';
 
-function Chart ({stompClient}) {
+function Chart ({stompClient,newStreamFunc}) {
 
   //define state variables
   const chart = useRef(null);
@@ -42,13 +42,10 @@ function Chart ({stompClient}) {
 
   const subscribeToStream = () => {
     if(stompClient.connected === true && !initialRender.current){
+      // update to ensure we dont subscribe more than once to data stream
       initialRender.current = true;
       stompClient.subscribe('/stream/candleData/barHistory', handleBulkBars);
-      const body = {
-          ticker: 'BTCUSD',
-          tf: 'm1'
-      }
-      stompClient.send("/app/candleData/barHistory", {},JSON.stringify(body));
+      newStreamFunc("AAPL");
     } else if (stompClient.connected === true && initialRender.current){
         return;
     } else {
@@ -116,9 +113,6 @@ function Chart ({stompClient}) {
     drawAllCandles(numCandles.current, candleData);
     drawCandle(currentCandle.current, numCandles.current);
   })
-
-
-  
 
   function handleResize(chartEl, xScaleEl, yScaleEl){
     const chartDiv = document.getElementById("mainChartDiv");
@@ -281,10 +275,10 @@ function Chart ({stompClient}) {
 
   return(
     <div className='col-lg-10 col-md-9 col-12 chartContainer'>
-      <ChartMenu/>
+      <ChartMenu stompClient={stompClient} newStreamFunc = {newStreamFunc}/>
       <div className="mainChartContainer">
-        <div id="mainChartDiv" className='p-0 w-100'>
-          <canvas id="mainChart" width="1500" height="600"
+        <div id="mainChartDiv" className='p-0 w-100' >
+          <canvas id="mainChart" width="1500" height="600" ticker = ""
             onMouseDown={mouseDown}
             onMouseUp = {mouseUp}
             onMouseMove = {chartMouseMove}/>

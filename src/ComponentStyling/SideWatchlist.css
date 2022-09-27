@@ -60,3 +60,10 @@
     color: var(--green);
 }
 
+.newTickerInput{
+    background-color: transparent;
+    border:none;
+    border-bottom: 1px solid var(--tertiary-bg-color);
+    color:white;
+}
+

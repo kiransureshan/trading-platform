@@ -1,13 +1,25 @@
 import '../ComponentStyling/SideWatchlist.css'
 
-function SideWatchlist({name,tickers,id}){
+function SideWatchlist({name,tickers,id,newStreamFunc, addTickerFunc, wlId}){
     const watchListId = `watchlist${id}`;
-
+    
     function hideBody(){
         var body = document.getElementById(watchListId);
         var button = document.getElementById(watchListId+ "Button");
         body.style.display === "none" ? body.style.display = "table" : body.style.display = "none";
         button.style.transform === "rotate(180deg)" ? button.style.transform = "" : button.style.transform = "rotate(180deg)";
+    }
+
+    const handleNewTicker = (e) => {
+        // check for enter
+        if (e.keyCode !== 13){
+            return;
+        }
+        
+        addTickerFunc(e.target.value,wlId);
+
+        // clear text from input box
+        e.target.value = "";
     }
 
     return(
@@ -21,18 +33,20 @@ function SideWatchlist({name,tickers,id}){
             <table id={watchListId} style={{display:"none"}} className='watchlistTable' >
                 <thead>
                     <tr className='watchlistHeader'>
-                        <td className='col-3'>Ticker</td>
-                        <td className='col-3'>Last</td>
-                        <td className='col-3'>Daily %</td>
+                        <td className='col-12 text-center'>Ticker</td>
                     </tr>
                 </thead>
                 <tbody>
-                    {tickers.map((obj,i) => {return <tr className='watchlistRow' key = {i}>
-                        <td className='col-3'>{obj.ticker}</td>
-                        <td className='col-3'>{obj.last}</td>
-                        <td className={(obj.dailyChangePercent >=0 ? "dailyChange positive" : "dailyChange negative")+"col-3"}>{obj.dailyChangePercent}</td>
+                    {
+                        tickers.map((obj,i) => {return <tr className='watchlistRow row' key = {i}>
+                        <td className='col-12 text-center' onClick={() => {newStreamFunc(obj.ticker)}}>{obj.ticker}</td>
                     </tr>
                 })}
+                <tr className='watchlistRow row'>
+                    <td className='col-12 text-center'>
+                        <input onKeyDown={handleNewTicker} placeholder="Add Ticker" className="newTickerInput"></input>
+                    </td>
+                </tr>
                 </tbody>
             </table>
         </div>

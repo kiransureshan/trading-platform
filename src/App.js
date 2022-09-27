@@ -4,7 +4,6 @@ import Header from './Components/Header';
 import SideBar from './Components/SideBar';
 import Portfolio from './Components/Portfolio';
 import {BrowserRouter,Routes,Route} from "react-router-dom";
-import { useEffect, useRef } from 'react';
 import * as SockJS from 'sockjs-client';
 import * as Stomp from 'stompjs';
 
@@ -24,6 +23,23 @@ function App() {
 
     stompClient.connect({}, onConnected, onError);
 
+    const updatePrimaryStream = (ticker) => {
+      // validate stomp connection to send requests
+      if (stompClient.connected !== true){
+          return;
+      }
+      
+      const body = {
+          ticker: ticker.toUpperCase(),
+          tf: 'd1'
+      }
+
+      stompClient.send("/app/candleData/barHistory", {},JSON.stringify(body));
+      stompClient.send("/app/candleData/changePrimaryStream", {}, JSON.stringify(body));
+
+      let chartEl = document.getElementById("mainChart");
+      chartEl.ticker = ticker;
+    }
 
 
   return (
@@ -31,8 +47,8 @@ function App() {
       <div className="App">
         <Header/>
         <Routes>
-          <Route path="/trading-platform" element={<div className="mainContent"><SideBar/><Chart stompClient={stompClient}/></div>}/>
-          <Route path="/chart" element={<div className="mainContent"><SideBar/><Chart stompClient={stompClient}/></div>}/>
+          <Route path="/trading-platform" element={<div className="mainContent"><SideBar stompClient={stompClient} newStreamFunc = {updatePrimaryStream}/><Chart stompClient={stompClient} newStreamFunc = {updatePrimaryStream}/></div>}/>
+          <Route path="/chart" element={<div className="mainContent"><SideBar stompClient={stompClient} newStreamFunc = {updatePrimaryStream}/><Chart stompClient={stompClient} newStreamFunc = {updatePrimaryStream}/></div>}/>
           <Route path="/portfolio" element={<div className="mainContent"><Portfolio/></div>}/>
         </Routes>        
       </div>    

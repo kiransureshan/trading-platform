@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/trading-platform/static/css/main.882d56cf.css",
-    "main.js": "/trading-platform/static/js/main.a355350d.js",
+    "main.css": "/trading-platform/static/css/main.d6d13ece.css",
+    "main.js": "/trading-platform/static/js/main.5988394d.js",
     "static/media/logo.svg": "/trading-platform/static/media/logo.a00c216ac325204c601645d7a265f8d5.svg",
     "index.html": "/trading-platform/index.html",
-    "main.882d56cf.css.map": "/trading-platform/static/css/main.882d56cf.css.map",
-    "main.a355350d.js.map": "/trading-platform/static/js/main.a355350d.js.map"
+    "main.d6d13ece.css.map": "/trading-platform/static/css/main.d6d13ece.css.map",
+    "main.5988394d.js.map": "/trading-platform/static/js/main.5988394d.js.map"
   },
   "entrypoints": [
-    "static/css/main.882d56cf.css",
-    "static/js/main.a355350d.js"
+    "static/css/main.d6d13ece.css",
+    "static/js/main.5988394d.js"
   ]
 }
